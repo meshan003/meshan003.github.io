@@ -1,0 +1,941 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Istanbul 3.8-10.8</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .phone {
+            position: relative;
+            width: 375px;
+            height: 812px;
+            background-color: white;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 10px solid #111;
+        }
+        
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background-color: #111;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 100;
+        }
+        
+        .screen {
+            height: 100%;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .home-bg {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='355' height='792' viewBox='0 0 355 792' fill='none'%3E%3Cpath d='M0 0H355V792H0V0Z' fill='url(%23paint0_linear_0_1)'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_0_1' x1='177.5' y1='0' x2='177.5' y2='792' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23E74C3C'/%3E%3Cstop offset='1' stop-color='%23C0392B'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .day-header {
+            background: linear-gradient(to right, #E74C3C, #C0392B);
+        }
+        
+        .location-card {
+            border-left: 4px solid #E74C3C;
+        }
+        
+        .nav-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Custom scrollbar */
+        .screen::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        .screen::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .screen::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+        }
+        
+        /* SVG Icons */
+        .icon-mosque {
+            fill: #E74C3C;
+        }
+        
+        .icon-food {
+            fill: #E67E22;
+        }
+        
+        .icon-shopping {
+            fill: #3498DB;
+        }
+        
+        .icon-walk {
+            fill: #2ECC71;
+        }
+        
+        .icon-boat {
+            fill: #3498DB;
+        }
+        
+        .icon-view {
+            fill: #9B59B6;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone">
+        <div class="notch"></div>
+        <div class="screen" id="app">
+            <!-- Home Screen -->
+            <div id="home" class="h-full home-bg flex flex-col items-center justify-between py-16">
+                <div class="mt-8 text-center">
+                    <h1 class="text-4xl font-bold text-white mb-2">Istanbul</h1>
+                    <p class="text-white text-xl opacity-90">3.8 - 10.8</p>
+                </div>
+                
+                <div class="relative w-64 h-64">
+                    <svg class="absolute inset-0" viewBox="0 0 100 100">
+                        <defs>
+                            <clipPath id="circleView">
+                                <circle cx="50" cy="50" r="50" />
+                            </clipPath>
+                        </defs>
+                        <image href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M100 0C44.8 0 0 44.8 0 100s44.8 100 100 100 100-44.8 100-100S155.2 0 100 0zm0 180c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z' fill='%23E74C3C'/%3E%3Cpath d='M150 100c0 27.6-22.4 50-50 50s-50-22.4-50-50 22.4-50 50-50 50 22.4 50 50zm-90 0c0 22.1 17.9 40 40 40s40-17.9 40-40-17.9-40-40-40-40 17.9-40 40z' fill='%23E74C3C'/%3E%3Cpath d='M100 70c-16.5 0-30 13.5-30 30s13.5 30 30 30 30-13.5 30-30-13.5-30-30-30zm0 40c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z' fill='%23E74C3C'/%3E%3Cpath d='M100 90c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm0 15c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z' fill='%23E74C3C'/%3E%3C/svg%3E" width="100" height="100" clip-path="url(#circleView)" />
+                    </svg>
+                    
+                    <svg class="absolute inset-0" viewBox="0 0 100 100">
+                        <path d="M50,10 L50,20 M80,20 L70,30 M90,50 L80,50 M80,80 L70,70 M50,90 L50,80 M20,80 L30,70 M10,50 L20,50 M20,20 L30,30" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 512 512" fill="#fff">
+                            <path d="M256,0C114.6,0,0,114.6,0,256s114.6,256,256,256s256-114.6,256-256S397.4,0,256,0z M256,128c17.7,0,32,14.3,32,32 s-14.3,32-32,32s-32-14.3-32-32S238.3,128,256,128z M304,384h-96c-8.8,0-16-7.2-16-16c0-8.8,7.2-16,16-16h16v-96h-16 c-8.8,0-16-7.2-16-16c0-8.8,7.2-16,16-16h64c8.8,0,16,7.2,16,16v112h16c8.8,0,16,7.2,16,16C320,376.8,312.8,384,304,384z"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="text-center px-8">
+                    <h2 class="text-2xl font-semibold text-white mb-4">Road Istanbul</h2>
+                    <p class="text-white opacity-80 mb-8">Otkrijte čarobni Istanbul kroz naš detaljni plan putovanja. Džamije, bazari, krstarenje Bosforom i još mnogo toga!</p>
+                    <button onclick="showScreen('plan')" class="bg-white text-red-600 font-bold py-3 px-8 rounded-full shadow-lg transform transition hover:scale-105">
+                        Idi na plan
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Plan Screen -->
+            <div id="plan" class="hidden h-full bg-gray-100">
+                <div class="bg-gradient-to-r from-red-600 to-red-800 text-white p-6 pt-10 pb-8 shadow-md">
+                    <h1 class="text-2xl font-bold">Road Istanbul</h1>
+                    <p class="opacity-90">3.8 - 10.8</p>
+                </div>
+                
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Izaberite dan:</h2>
+                    
+                    <div class="grid grid-cols-1 gap-3">
+                        <button onclick="showScreen('day1')" class="nav-btn bg-white p-4 rounded-xl shadow flex items-center justify-between">
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Dan 1 - Ponedjeljak</h3>
+                                <p class="text-sm text-gray-600">Arasta Bazaar, Plava džamija, Aja Sofija</p>
+                            </div>
+                            <div class="bg-red-600 h-10 w-10 rounded-full flex items-center justify-center text-white font-bold">
+                                4.8
+                            </div>
+                        </button>
+                        
+                        <button onclick="showScreen('day2')" class="nav-btn bg-white p-4 rounded-xl shadow flex items-center justify-between">
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Dan 2 - Utorak</h3>
+                                <p class="text-sm text-gray-600">Eyüp Sultan, Pierre Loti, Galata</p>
+                            </div>
+                            <div class="bg-red-600 h-10 w-10 rounded-full flex items-center justify-center text-white font-bold">
+                                5.8
+                            </div>
+                        </button>
+                        
+                        <button onclick="showScreen('day3')" class="nav-btn bg-white p-4 rounded-xl shadow flex items-center justify-between">
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Dan 3 - Srijeda</h3>
+                                <p class="text-sm text-gray-600">Krstarenje Bosforom, Shopping, Balat</p>
+                            </div>
+                            <div class="bg-red-600 h-10 w-10 rounded-full flex items-center justify-center text-white font-bold">
+                                6.8
+                            </div>
+                        </button>
+                        
+                        <button onclick="showScreen('day4')" class="nav-btn bg-white p-4 rounded-xl shadow flex items-center justify-between">
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Dan 4 - Četvrtak</h3>
+                                <p class="text-sm text-gray-600">Azijska strana, Arnavutköy, Ortaköy</p>
+                            </div>
+                            <div class="bg-red-600 h-10 w-10 rounded-full flex items-center justify-center text-white font-bold">
+                                7.8
+                            </div>
+                        </button>
+                        
+                        <button onclick="showScreen('day5')" class="nav-btn bg-white p-4 rounded-xl shadow flex items-center justify-between">
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Dan 5 & 6 - Petak/Subota</h3>
+                                <p class="text-sm text-gray-600">Džuma, Slobodno vrijeme, Klub</p>
+                            </div>
+                            <div class="bg-red-600 h-10 w-10 rounded-full flex items-center justify-center text-white font-bold">
+                                8-9.8
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="p-4 flex justify-center">
+                    <button onclick="showScreen('home')" class="bg-red-600 text-white py-2 px-6 rounded-full shadow">
+                        Nazad na početnu
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Day 1 Screen -->
+            <div id="day1" class="hidden h-full bg-gray-100">
+                <div class="day-header text-white p-6 pt-10 shadow-md">
+                    <div class="flex justify-between items-center">
+                        <button onclick="showScreen('plan')" class="text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <h1 class="text-xl font-bold">Dan 1 - Ponedjeljak</h1>
+                        <button onclick="showScreen('day2')" class="text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="text-center opacity-90 mt-1">4.8</p>
+                </div>
+                
+                <div class="p-4 overflow-y-auto">
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-shopping w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5C3.9 6 3 6.9 3 8v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Arasta Bazaar</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Historijski bazar smješten iza Plave džamije, poznat po prodavnicama s tepisima, rukotvorinama i suvenirima.</p>
+                        <p class="text-gray-600 text-sm">Savjet: Odlično mjesto za kupovinu autentičnih turskih suvenira i rukotvorina.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-food w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-8-15.03-8-15.03 0h15.03zM1.02 17h15v2h-15z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Doručak</h2>
+                        </div>
+                        <p class="text-gray-700">Započnite dan u nekom od lokalnih kafića u blizini Arasta Bazaara. Probajte tradicionalni turski doručak (kahvaltı) koji uključuje sir, masline, jaja, med, džem i svježi kruh.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-mosque w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 10h-2V4h2v6zm-2 2h2v8h-2v-8zM5 10H3V4h2v6zm-2 2h2v8H3v-8zm16-8h-2V2h-2v2h-4V2h-2v2H5V2H3v2H1v16h22V4h-4z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Plava džamija (Sultanahmet Camii)</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Jedna od najimpresivnijih džamija u Istanbulu, poznata po svojih šest minareta i prekrasnim plavim pločicama u enterijeru.</p>
+                        <div class="bg-blue-50 p-3 rounded-md mb-2">
+                            <p class="text-blue-800 text-sm font-medium">Impresivan enterijer i ambijent s više od 20,000 ručno oslikanih keramičkih pločica.</p>
+                        </div>
+                        <p class="text-gray-600 text-sm">Napomena: Obavezno pristojno odijevanje (pokrivena ramena i koljena), ženama se preporučuje marama za glavu.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-mosque w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 10h-2V4h2v6zm-2 2h2v8h-2v-8zM5 10H3V4h2v6zm-2 2h2v8H3v-8zm16-8h-2V2h-2v2h-4V2h-2v2H5V2H3v2H1v16h22V4h-4z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Aja Sofija (Ayasofya-i Kebir Camii)</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Nekadašnja bizantijska crkva, kasnije pretvorena u džamiju, muzej, pa ponovo u džamiju. Arhitektonsko čudo staro skoro 1500 godina.</p>
+                        <div class="bg-blue-50 p-3 rounded-md mb-2">
+                            <p class="text-blue-800 text-sm font-medium">Istorijski značaj i vizuelni dojam - spoj hrišćanske i islamske umjetnosti i arhitekture.</p>
+                        </div>
+                        <p class="text-gray-600 text-sm">Savjet: Obratite pažnju na ogromnu kupolu i mozaike koji datiraju iz različitih perioda.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-food w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-8-15.03-8-15.03 0h15.03zM1.02 17h15v2h-15z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Ručak</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Ručak u okolini Sultanahmeta ili Sirkecija.</p>
+                        <div class="bg-yellow-50 p-3 rounded-md mb-2">
+                            <p class="text-yellow-800 text-sm font-medium">Preporuka: lokalni restoran, kebab ili döner</p>
+                        </div>
+                        <div class="bg-yellow-50 p-3 rounded-md">
+                            <p class="text-yellow-800 text-sm font-medium">Alternativa: restoran s krovnom terasom za panoramski pogled</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-mosque w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 10h-2V4h2v6zm-2 2h2v8h-2v-8zM5 10H3V4h2v6zm-2 2h2v8H3v-8zm16-8h-2V2h-2v2h-4V2h-2v2H5V2H3v2H1v16h22V4h-4z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Džamija Sulejmanija (Süleymaniye Camii)</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Remek-djelo arhitekte Sinana, najveća džamija u Istanbulu.</p>
+                        <div class="bg-blue-50 p-3 rounded-md mb-2">
+                            <p class="text-blue-800 text-sm font-medium">Grobnice Sulejmana i Hurem (Rokselane)</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-md">
+                            <p class="text-blue-800 text-sm font-medium">Pogled na Zlatni rog - jedan od najljepših panoramskih pogleda na grad</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-mosque w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 10h-2V4h2v6zm-2 2h2v8h-2v-8zM5 10H3V4h2v6zm-2 2h2v8H3v-8zm16-8h-2V2h-2v2h-4V2h-2v2H5V2H3v2H1v16h22V4h-4z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Beyazıt džamija i trg</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Historijski trg s džamijom iz osmanskog perioda.</p>
+                        <div class="bg-blue-50 p-3 rounded-md mb-2">
+                            <p class="text-blue-800 text-sm font-medium">Autentična atmosfera lokalnog života</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-md">
+                            <p class="text-blue-800 text-sm font-medium">Pogled na impresivnu kapiju Istanbulskog univerziteta</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-shopping w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5C3.9 6 3 6.9 3 8v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Grand Bazaar (opcionalno)</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Jedan od najvećih i najstarijih natkrivenih bazara na svijetu s preko 4000 prodavnica.</p>
+                        <div class="bg-yellow-50 p-3 rounded-md mb-2">
+                            <p class="text-yellow-800 text-sm font-medium">Ako voliš gužvu i cjenkanje</p>
+                        </div>
+                        <div class="bg-yellow-50 p-3 rounded-md">
+                            <p class="text-yellow-800 text-sm font-medium">Suveniri i lokalna roba - tepisi, keramika, nakit, začini</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-walk w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Šetnja do Gülhane parka ili obale kod Eminönü</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Opuštajuća šetnja kroz historijski park ili uz obalu.</p>
+                        <div class="bg-green-50 p-3 rounded-md mb-2">
+                            <p class="text-green-800 text-sm font-medium">Odmor u parku ili pored vode nakon dugog dana razgledanja</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-md">
+                            <p class="text-green-800 text-sm font-medium">Mogućnost kupovine balık ekmek sendviča (sendvič s ribom) - popularna ulična hrana</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-food w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 9h-3.56c.35-.59.56-1.27.56-2 0-2.21-1.79-4-4-4-.34 0-.66.05-.98.13-.32-.08-.64-.13-.98-.13-.34 0-.66.05-.98.13C10.66 3.05 10.34 3 10 3 7.79 3 6 4.79 6 7c0 .73.21 1.41.56 2H3c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h.18C3.6 16.16 4.7 17.63 6.16 18.43 6.06 18.93 6 19.46 6 20v1h12v-1c0-.54-.06-1.07-.16-1.57 1.46-.8 2.56-2.27 2.98-4.03H21c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2zm-8-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-3 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm5 14H9v-1h6v1zm1.75-6c-.41 1.16-1.52 2-2.75 2-1.24 0-2.34-.84-2.75-2h5.5zm1.75-2H6.5c0-1.38 1.12-2.5 2.5-2.5.17 0 .34.02.5.05.16-.03.33-.05.5-.05s.34.02.5.05c.16-.03.33-.05.5-.05 1.38 0 2.5 1.12 2.5 2.5h2.5v2h-2.5z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Navecer Aga Kapisi druženje</h2>
+                        </div>
+                        <p class="text-gray-700">Završite dan u restoranu Ağa Kapısı, uživajući u tradicionalnoj turskoj kuhinji i druženju s prijateljima.</p>
+                    </div>
+                    
+                    <div class="flex justify-between mt-6 mb-4">
+                        <button onclick="showScreen('plan')" class="bg-gray-200 text-gray-800 py-2 px-6 rounded-full shadow">
+                            Plan puta
+                        </button>
+                        <button onclick="showScreen('day2')" class="bg-red-600 text-white py-2 px-6 rounded-full shadow">
+                            Dan 2 →
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 2 Screen -->
+            <div id="day2" class="hidden h-full bg-gray-100">
+                <div class="day-header text-white p-6 pt-10 shadow-md">
+                    <div class="flex justify-between items-center">
+                        <button onclick="showScreen('day1')" class="text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <h1 class="text-xl font-bold">Dan 2 - Utorak</h1>
+                        <button onclick="showScreen('day3')" class="text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="text-center opacity-90 mt-1">5.8</p>
+                </div>
+                
+                <div class="p-4 overflow-y-auto">
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-mosque w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 10h-2V4h2v6zm-2 2h2v8h-2v-8zM5 10H3V4h2v6zm-2 2h2v8H3v-8zm16-8h-2V2h-2v2h-4V2h-2v2H5V2H3v2H1v16h22V4h-4z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Eyüp Sultan džamija i kompleks</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Jedno od najsvetijih mjesta u Istanbulu, važno hodočasničko mjesto za muslimane.</p>
+                        <div class="bg-blue-50 p-3 rounded-md mb-2">
+                            <p class="text-blue-800 text-sm font-medium">Mirna atmosfera, lokalni duh daleko od turističke gužve</p>
+                        </div>
+                        <p class="text-gray-600 text-sm">U sklopu kompleksa su i hamam, šadrvani i islamsko groblje s umjetnički vrijednim nadgrobnim spomenicima.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-view w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Uspon do Pierre Loti brda</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Brdo nazvano po francuskom piscu koji je ovdje često boravio.</p>
+                        <div class="bg-purple-50 p-3 rounded-md mb-2">
+                            <p class="text-purple-800 text-sm font-medium">Možeš pješice kroz groblje (vrlo zanimljivo i tiho) ili žičarom (Eyüp Teleferik)</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-md mb-2">
+                            <p class="text-purple-800 text-sm font-medium">Spektakularan pogled na Zlatni rog</p>
+                        </div>
+                        <p class="text-gray-600 text-sm">Savjet: Obavezno popijte kafu u Pierre Loti kafiću s tradicionalnim ambijentom i panoramskim pogledom.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-boat w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.34-.42-.6-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.48.26-.6.5s-.15.52-.06.78L3.95 19zM6 6h12v3.97L12 8 6 9.97V6z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Vožnja duž Zlatnog roga prema Karaköy</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Vožnja autobusom ili brodićem duž Zlatnog roga.</p>
+                        <div class="bg-blue-50 p-3 rounded-md">
+                            <p class="text-blue-800 text-sm font-medium">Alternativa: bus nazad prema Eminönü, pa mostom do Galate</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-walk w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Galata most i Karaköy</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Ikonični most koji povezuje stari i novi dio grada.</p>
+                        <div class="bg-green-50 p-3 rounded-md mb-2">
+                            <p class="text-green-800 text-sm font-medium">Šetnja uz obalu, pogodno za odmor i uličnu hranu</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-md">
+                            <p class="text-green-800 text-sm font-medium">Balık ekmek (sendvič s ribom) ako nisi probao prvi dan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-view w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Galata kula i okolina</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Srednjovjekovna kula s panoramskim pogledom na grad.</p>
+                        <div class="bg-purple-50 p-3 rounded-md mb-2">
+                            <p class="text-purple-800 text-sm font-medium">Ako ne ideš u kulu (ulaz se plaća), prošetaj okolinom</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-md mb-2">
+                            <p class="text-purple-800 text-sm font-medium">Uske ulice, stari kafići, boemski štih</p>
+                        </div>
+                        <p class="text-gray-600 text-sm">Preporuka: Ulica Serdar-ı Ekrem – vrlo fotogenična i mirna ulica s vintage prodavnicama i kafićima.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-walk w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Istiklal ulica</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Najpoznatija šetnica u Istanbulu duga 1.4 km.</p>
+                        <div class="bg-green-50 p-3 rounded-md mb-2">
+                            <p class="text-green-800 text-sm font-medium">Mješavina starih zgrada, trgovina, uličnih svirača</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-md">
+                            <p class="text-green-800 text-sm font-medium">Ne moraš sve ići – možeš krenuti od Galate prema Taksimu</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-mosque w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 10h-2V4h2v6zm-2 2h2v8h-2v-8zM5 10H3V4h2v6zm-2 2h2v8H3v-8zm16-8h-2V2h-2v2h-4V2h-2v2H5V2H3v2H1v16h22V4h-4z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Džamije i crkve usput</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Istiklal ulica i okolina kriju mnoge vjerske objekte različitih religija.</p>
+                        <div class="bg-blue-50 p-3 rounded-md mb-2">
+                            <p class="text-blue-800 text-sm font-medium">Kilise St. Anthony (katolička crkva na Istiklal)</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-md">
+                            <p class="text-blue-800 text-sm font-medium">Mala Ali Yavuz džamija i druge skrivene bogomolje</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-view w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Taksim trg</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Centralna tačka modernog Istanbula.</p>
+                        <div class="bg-purple-50 p-3 rounded-md mb-2">
+                            <p class="text-purple-800 text-sm font-medium">Spomenik Republici - simbol moderne Turske</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-md">
+                            <p class="text-purple-800 text-sm font-medium">Džamija Taksim – nova, ali lijepo uređena</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-view w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Park Gezi i pogled</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Urbani park pored Taksim trga.</p>
+                        <div class="bg-green-50 p-3 rounded-md">
+                            <p class="text-green-800 text-sm font-medium">Odmor u hladu, pogled prema Bosforu i azijskoj strani</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-view w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Alternativno ili dodatno</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Ovisno o vremenu i energiji:</p>
+                        <div class="bg-purple-50 p-3 rounded-md">
+                            <p class="text-purple-800 text-sm font-medium">Kabataş obala – dobar kraj za odmor, kafu ili vožnju brodom</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-food w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 9h-3.56c.35-.59.56-1.27.56-2 0-2.21-1.79-4-4-4-.34 0-.66.05-.98.13-.32-.08-.64-.13-.98-.13-.34 0-.66.05-.98.13C10.66 3.05 10.34 3 10 3 7.79 3 6 4.79 6 7c0 .73.21 1.41.56 2H3c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h.18C3.6 16.16 4.7 17.63 6.16 18.43 6.06 18.93 6 19.46 6 20v1h12v-1c0-.54-.06-1.07-.16-1.57 1.46-.8 2.56-2.27 2.98-4.03H21c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2zm-8-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-3 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm5 14H9v-1h6v1zm1.75-6c-.41 1.16-1.52 2-2.75 2-1.24 0-2.34-.84-2.75-2h5.5zm1.75-2H6.5c0-1.38 1.12-2.5 2.5-2.5.17 0 .34.02.5.05.16-.03.33-.05.5-.05s.34.02.5.05c.16-.03.33-.05.5-.05 1.38 0 2.5 1.12 2.5 2.5h2.5v2h-2.5z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Navecer Aga Kapisi druženje</h2>
+                        </div>
+                        <p class="text-gray-700">Završite dan u restoranu Ağa Kapısı, uživajući u tradicionalnoj turskoj kuhinji i druženju s prijateljima.</p>
+                    </div>
+                    
+                    <div class="flex justify-between mt-6 mb-4">
+                        <button onclick="showScreen('day1')" class="bg-gray-200 text-gray-800 py-2 px-6 rounded-full shadow">
+                            ← Dan 1
+                        </button>
+                        <button onclick="showScreen('day3')" class="bg-red-600 text-white py-2 px-6 rounded-full shadow">
+                            Dan 3 →
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 3 Screen -->
+            <div id="day3" class="hidden h-full bg-gray-100">
+                <div class="day-header text-white p-6 pt-10 shadow-md">
+                    <div class="flex justify-between items-center">
+                        <button onclick="showScreen('day2')" class="text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <h1 class="text-xl font-bold">Dan 3 - Srijeda</h1>
+                        <button onclick="showScreen('day4')" class="text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="text-center opacity-90 mt-1">6.8</p>
+                </div>
+                
+                <div class="p-4 overflow-y-auto">
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-boat w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.34-.42-.6-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.48.26-.6.5s-.15.52-.06.78L3.95 19zM6 6h12v3.97L12 8 6 9.97V6z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Krstarenje Bosforom</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Nezaboravno iskustvo plovidbe između Europe i Azije.</p>
+                        <div class="bg-blue-50 p-3 rounded-md mb-2">
+                            <p class="text-blue-800 text-sm font-medium">Obilazak znamenitosti i zabava na brodu</p>
+                        </div>
+                        <p class="text-gray-600 text-sm">Tokom krstarenja vidjet ćete: Dolmabahçe palatu, Ortaköy džamiju, Rumeli tvrđavu, Bosphorus most, luksuzne vile uz obalu i mnoge druge znamenitosti.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-shopping w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5C3.9 6 3 6.9 3 8v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Shopping mall</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Posjet nekom od modernih tržnih centara u Istanbulu (ovisno od broja prijavljenih).</p>
+                        <p class="text-gray-600 text-sm">Mogući izbori: Istanbul Cevahir, Kanyon, Istinye Park ili Forum Istanbul - svi nude kombinaciju lokalnih i međunarodnih brendova.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-walk w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Obilazak Balata</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Historijska četvrt poznata po šarenim kućama i autentičnoj atmosferi.</p>
+                        <div class="bg-green-50 p-3 rounded-md mb-2">
+                            <p class="text-green-800 text-sm font-medium">Nekadašnja jevrejska četvrt s bogatom historijom</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-md">
+                            <p class="text-green-800 text-sm font-medium">Fotogenične ulice s raznobojnim kućama i stepenicama</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-food w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 9h-3.56c.35-.59.56-1.27.56-2 0-2.21-1.79-4-4-4-.34 0-.66.05-.98.13-.32-.08-.64-.13-.98-.13-.34 0-.66.05-.98.13C10.66 3.05 10.34 3 10 3 7.79 3 6 4.79 6 7c0 .73.21 1.41.56 2H3c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h.18C3.6 16.16 4.7 17.63 6.16 18.43 6.06 18.93 6 19.46 6 20v1h12v-1c0-.54-.06-1.07-.16-1.57 1.46-.8 2.56-2.27 2.98-4.03H21c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2zm-8-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-3 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm5 14H9v-1h6v1zm1.75-6c-.41 1.16-1.52 2-2.75 2-1.24 0-2.34-.84-2.75-2h5.5zm1.75-2H6.5c0-1.38 1.12-2.5 2.5-2.5.17 0 .34.02.5.05.16-.03.33-.05.5-.05s.34.02.5.05c.16-.03.33-.05.5-.05 1.38 0 2.5 1.12 2.5 2.5h2.5v2h-2.5z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Ağa Kapısı</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Druženje u kafiću i restoranu Ağa Kapısı.</p>
+                        <div class="bg-yellow-50 p-3 rounded-md">
+                            <p class="text-yellow-800 text-sm font-medium">Terasa s koje se pruža najljepši pogled na Bosfor i centralni dio Istanbula</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between mt-6 mb-4">
+                        <button onclick="showScreen('day2')" class="bg-gray-200 text-gray-800 py-2 px-6 rounded-full shadow">
+                            ← Dan 2
+                        </button>
+                        <button onclick="showScreen('day4')" class="bg-red-600 text-white py-2 px-6 rounded-full shadow">
+                            Dan 4 →
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 4 Screen -->
+            <div id="day4" class="hidden h-full bg-gray-100">
+                <div class="day-header text-white p-6 pt-10 shadow-md">
+                    <div class="flex justify-between items-center">
+                        <button onclick="showScreen('day3')" class="text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <h1 class="text-xl font-bold">Dan 4 - Četvrtak</h1>
+                        <button onclick="showScreen('day5')" class="text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="text-center opacity-90 mt-1">7.8</p>
+                </div>
+                
+                <div class="p-4 overflow-y-auto">
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-view w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Arnavutköy</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Slikovito ribarsko selo na obali Bosfora.</p>
+                        <div class="bg-blue-50 p-3 rounded-md mb-2">
+                            <p class="text-blue-800 text-sm font-medium">Doručak uz Bosfor u nekom od kafića s pogledom na vodu</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-md">
+                            <p class="text-blue-800 text-sm font-medium">Šetnja kroz kvart s očuvanim osmanskim drvenim kućama</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-mosque w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 10h-2V4h2v6zm-2 2h2v8h-2v-8zM5 10H3V4h2v6zm-2 2h2v8H3v-8zm16-8h-2V2h-2v2h-4V2h-2v2H5V2H3v2H1v16h22V4h-4z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Ortaköy</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Popularno mjesto za lokalne stanovnike i turiste.</p>
+                        <div class="bg-blue-50 p-3 rounded-md mb-2">
+                            <p class="text-blue-800 text-sm font-medium">Ortaköy džamija (Büyük Mecidiye Camii) - savršena za fotografije s Bosforskim mostom u pozadini</p>
+                        </div>
+                        <div class="bg-yellow-50 p-3 rounded-md">
+                            <p class="text-yellow-800 text-sm font-medium">Kumpir na ruci i šetnja obalom - probajte poznati turski kumpir (pečeni krompir s raznim dodacima)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-boat w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.34-.42-.6-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.48.26-.6.5s-.15.52-.06.78L3.95 19zM6 6h12v3.97L12 8 6 9.97V6z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Azijska strana (popodne)</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Prelazak na azijski kontinent.</p>
+                        <div class="bg-blue-50 p-3 rounded-md">
+                            <p class="text-blue-800 text-sm font-medium">Üsküdar (brod iz Beşiktaşa) - najbrži i najslikovitiji način prelaska</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-mosque w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 10h-2V4h2v6zm-2 2h2v8h-2v-8zM5 10H3V4h2v6zm-2 2h2v8H3v-8zm16-8h-2V2h-2v2h-4V2h-2v2H5V2H3v2H1v16h22V4h-4z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Üsküdar</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Tradicionalni azijski dio Istanbula.</p>
+                        <div class="bg-blue-50 p-3 rounded-md mb-2">
+                            <p class="text-blue-800 text-sm font-medium">Mihrimah Sultan džamija - remek-djelo arhitekte Sinana</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-md">
+                            <p class="text-blue-800 text-sm font-medium">Obala i pogled na Maiden's Tower (Kız Kulesi) - legendarna kula na malom otoku</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-walk w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Kuzguncuk</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Miran kvart s kafićima i šarenim kućama.</p>
+                        <div class="bg-green-50 p-3 rounded-md mb-2">
+                            <p class="text-green-800 text-sm font-medium">Ulična umjetnost i ambijent - umjetnička četvrt s posebnim šarmom</p>
+                        </div>
+                        <p class="text-gray-600 text-sm">Savjet: Prošetajte ulicom Icadiye Caddesi s kafićima i restoranima.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-walk w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Kadıköy</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Živahna četvrt na azijskoj strani, popularna među mladima.</p>
+                        <div class="bg-green-50 p-3 rounded-md mb-2">
+                            <p class="text-green-800 text-sm font-medium">Tržnica, ulična hrana, lokalni život - autentično iskustvo</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-md mb-2">
+                            <p class="text-green-800 text-sm font-medium">Ulica s grafitima i knjižarama - Yeldeğirmeni četvrt</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-md mb-2">
+                            <p class="text-green-800 text-sm font-medium">Moda - šetnja uz obalu s pogledom na evropsku stranu</p>
+                        </div>
+                        <div class="bg-yellow-50 p-3 rounded-md">
+                            <p class="text-yellow-800 text-sm font-medium">Kafa ili sladoled, zalazak sunca - savršen kraj dana</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between mt-6 mb-4">
+                        <button onclick="showScreen('day3')" class="bg-gray-200 text-gray-800 py-2 px-6 rounded-full shadow">
+                            ← Dan 3
+                        </button>
+                        <button onclick="showScreen('day5')" class="bg-red-600 text-white py-2 px-6 rounded-full shadow">
+                            Dan 5 & 6 →
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 5 & 6 Screen -->
+            <div id="day5" class="hidden h-full bg-gray-100">
+                <div class="day-header text-white p-6 pt-10 shadow-md">
+                    <div class="flex justify-between items-center">
+                        <button onclick="showScreen('day4')" class="text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <h1 class="text-xl font-bold">Dan 5 & 6</h1>
+                        <button onclick="showScreen('plan')" class="text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="text-center opacity-90 mt-1">8.8 - 9.8</p>
+                </div>
+                
+                <div class="p-4 overflow-y-auto">
+                    <div class="bg-yellow-50 p-4 rounded-lg shadow-md mb-6">
+                        <h2 class="text-lg font-semibold text-yellow-800 mb-2">Dan 5 - Petak (8.8)</h2>
+                        <p class="text-yellow-700">Slobodniji dan za opuštanje i duhovne aktivnosti.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-food w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-8-15.03-8-15.03 0h15.03zM1.02 17h15v2h-15z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Doručak</h2>
+                        </div>
+                        <p class="text-gray-700">Turski doručak u nekom od lokalnih kafića.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-mosque w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 10h-2V4h2v6zm-2 2h2v8h-2v-8zM5 10H3V4h2v6zm-2 2h2v8H3v-8zm16-8h-2V2h-2v2h-4V2h-2v2H5V2H3v2H1v16h22V4h-4z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Džuma namaz</h2>
+                        </div>
+                        <p class="text-gray-700">Prisustvovanje džuma namazu u nekoj od istanbulskih džamija - posebno iskustvo petkom.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-walk w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Slobodno vrijeme</h2>
+                        </div>
+                        <p class="text-gray-700">Vrijeme za odmor, šetnju ili dodatno istraživanje grada prema vlastitim željama.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-food w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 9h-3.56c.35-.59.56-1.27.56-2 0-2.21-1.79-4-4-4-.34 0-.66.05-.98.13-.32-.08-.64-.13-.98-.13-.34 0-.66.05-.98.13C10.66 3.05 10.34 3 10 3 7.79 3 6 4.79 6 7c0 .73.21 1.41.56 2H3c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h.18C3.6 16.16 4.7 17.63 6.16 18.43 6.06 18.93 6 19.46 6 20v1h12v-1c0-.54-.06-1.07-.16-1.57 1.46-.8 2.56-2.27 2.98-4.03H21c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2zm-8-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-3 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm5 14H9v-1h6v1zm1.75-6c-.41 1.16-1.52 2-2.75 2-1.24 0-2.34-.84-2.75-2h5.5zm1.75-2H6.5c0-1.38 1.12-2.5 2.5-2.5.17 0 .34.02.5.05.16-.03.33-.05.5-.05s.34.02.5.05c.16-.03.33-.05.5-.05 1.38 0 2.5 1.12 2.5 2.5h2.5v2h-2.5z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Večernji izlazak</h2>
+                        </div>
+                        <p class="text-gray-700">Posjet nekom od istanbulskih klubova ili barova za noćni provod.</p>
+                    </div>
+                    
+                    <div class="bg-yellow-50 p-4 rounded-lg shadow-md mb-6 mt-8">
+                        <h2 class="text-lg font-semibold text-yellow-800 mb-2">Dan 6 - Subota (9.8)</h2>
+                        <p class="text-yellow-700">Posljednji dan za kupovinu i slobodne aktivnosti.</p>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-walk w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Slobodno vrijeme</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Posljednji dan za kupovinu suvenira i poklona.</p>
+                        <div class="bg-green-50 p-3 rounded-md">
+                            <p class="text-green-800 text-sm font-medium">Mogućnost povratka na omiljene lokacije ili istraživanje novih mjesta</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-shopping w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5C3.9 6 3 6.9 3 8v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Kupovina suvenira</h2>
+                        </div>
+                        <p class="text-gray-700 mb-2">Preporuke za kupovinu autentičnih turskih suvenira:</p>
+                        <ul class="list-disc pl-5 text-gray-700">
+                            <li>Turski lokum i slatkiši - Hafiz Mustafa ili Koska</li>
+                            <li>Začini i čajevi - Egipatski bazar (Mısır Çarşısı)</li>
+                            <li>Keramika i porculan - Grand Bazaar ili Arasta Bazaar</li>
+                            <li>Turski tepisi - mali tepisi kao suveniri</li>
+                            <li>Tursko oko (nazar boncuğu) - tradicionalni talisman</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="location-card bg-white p-4 rounded-lg shadow-md mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="icon-food w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-8-15.03-8-15.03 0h15.03zM1.02 17h15v2h-15z"/>
+                            </svg>
+                            <h2 class="text-lg font-semibold">Oproštajna večera</h2>
+                        </div>
+                        <p class="text-gray-700">Posljednja večera u Istanbulu - prilika za sumiranje utisaka i uživanje u turskoj kuhinji.</p>
+                    </div>
+                    
+                    <div class="flex justify-between mt-6 mb-4">
+                        <button onclick="showScreen('day4')" class="bg-gray-200 text-gray-800 py-2 px-6 rounded-full shadow">
+                            ← Dan 4
+                        </button>
+                        <button onclick="showScreen('plan')" class="bg-red-600 text-white py-2 px-6 rounded-full shadow">
+                            Plan puta
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showScreen(screenId) {
+            // Hide all screens
+            document.querySelectorAll('.screen > div').forEach(screen => {
+                screen.classList.add('hidden');
+            });
+            
+            // Show the selected screen
+            document.getElementById(screenId).classList.remove('hidden');
+            
+            // Scroll to top
+            document.querySelector('.screen').scrollTop = 0;
+        }
+        
+        // Initialize with home screen
+        document.addEventListener('DOMContentLoaded', function() {
+            showScreen('home');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96362f44215cec2a',t:'MTc1MzIyMTM1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
