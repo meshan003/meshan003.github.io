@@ -1,0 +1,131 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+}
+
+.home-bg {
+    background-image: linear-gradient(to bottom, #E74C3C, #C0392B);
+    background-size: cover;
+    background-position: center;
+}
+
+.day-header {
+    background: linear-gradient(to right, #E74C3C, #C0392B);
+}
+
+.location-card {
+    border-left: 4px solid #E74C3C;
+}
+
+.nav-btn {
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Photo frame styling */
+.photo-frame {
+    background: white;
+    padding: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin: 20px 0;
+    transition: transform 0.3s ease;
+}
+
+.photo-frame:hover {
+    transform: scale(1.02);
+}
+
+.photo-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-frame.rotate-right {
+}
+
+.photo-frame.rotate-left {
+}
+
+.photo-frame .caption {
+    text-align: center;
+    margin-top: 8px;
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Menu overlay */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-content {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 350px;
+    height: 100%;
+    background-color: white;
+    z-index: 51;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.menu-overlay.active .menu-content {
+    right: 0;
+}
+
+/* Info section styling */
+.info-section {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+}
+
+.info-section:last-child {
+    border-bottom: none;
+}
+
+.info-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.info-title svg {
+    margin-right: 8px;
+    color: #E74C3C;
+}
