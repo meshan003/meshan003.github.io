@@ -1227,10 +1227,15 @@
     }
 
     // Kada se klikne X, vrati se na prethodni ekran
-    document.getElementById('closeInfoBtn').addEventListener('click', () => {
-        if (previousScreenId) {
-            showScreen(previousScreenId);
-        }
+document.getElementById('closeInfoBtn').addEventListener('click', () => {
+    const currentScreen = document.querySelector('#app > div:not(.hidden)');
+    
+    if (currentScreen.id !== 'info') {
+        previousScreenId = currentScreen.id; // zapamti gdje si bio
+        showScreen('info'); // idi na info
+    } else {
+        showScreen(previousScreenId || 'home'); // ako si već na info, vrati se nazad ili na home
+    }
     });
             
            </script>
